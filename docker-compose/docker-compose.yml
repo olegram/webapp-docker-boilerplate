@@ -49,7 +49,7 @@ services:
         PHPREDIS_VERSION: ${PHPREDIS_VERSION}
     environment:
       XDEBUG_CONFIG: remote_host=${HOST_MACHINE_IP}
-      PHP_IDE_CONFIG: serverName=${XDEBUG_IDE_SERVER_NAME}
+      PHP_IDE_CONFIG: serverName=localhost
     volumes:
       - ../containers/php7/custom.ini:/usr/local/etc/php/conf.d/custom.ini
       - ../containers/php7/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
