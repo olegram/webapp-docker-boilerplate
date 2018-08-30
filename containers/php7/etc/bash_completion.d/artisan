@@ -1,0 +1,38 @@
+_get_command_list () {
+  echo seed 
+  php "artisan" --no-ansi | sed "1,/Available commands/d" | awk '/^ +[a-z]+/ { print $1 }'
+}
+
+_composer_get_command_list () {
+  composer --no-ansi | sed "1,/Available commands/d" | awk '/^ +[a-z]+/ { print $1 }'
+}
+
+_artisan_completion () {
+  if [[ -f "artisan" ]] ; then
+
+    local all cur
+    all=`_get_command_list`
+
+    _get_comp_words_by_ref -n : cur
+    COMPREPLY=( $(compgen -W "${all}" -- "${cur}") )
+    __ltrim_colon_completions "$cur"
+
+    return 0
+  fi
+}
+
+_composer_completion () {
+  if [[ -f "./composer.json" ]] ; then
+    local all cur
+    all=`_composer_get_command_list`
+    cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "${all}" -- "${cur}") )
+  fi
+}
+
+complete -F _artisan_completion artisan
+complete -F _artisan_completion art
+complete -F _composer_completion composer
+
+alias artisan='php artisan'
+alias art='php artisan'
