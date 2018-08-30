@@ -6,3 +6,4 @@
   ![php-storm-2](images/php-storm-2.png)
   ![php-storm-3](images/php-storm-3.png)
 3. Включите прослушку и пользуйтесь.
+  ![php-storm-4](images/php-storm-4.png)
