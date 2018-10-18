@@ -35,7 +35,7 @@ services:
     volumes:
       - ../containers/nginx/nginx.conf:/etc/nginx/conf.d/default.template
       - ${APP_BACKEND_DIR}:/home/app/backend
-      - ${APP_BACKEND_DIR}:/home/app/frontend
+      - ${APP_FRONTEND_DIR}:/home/app/frontend
     command: /bin/bash -c "envsubst '$$APP_BACKEND_WEB_DIR $$APP_FRONTEND_WEB_DIR' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
     links:
       - php
