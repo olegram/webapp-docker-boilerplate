@@ -48,7 +48,7 @@ services:
         GID: ${GID}
         PHPREDIS_VERSION: ${PHPREDIS_VERSION}
     environment:
-      XDEBUG_CONFIG: remote_host=${HOST_MACHINE_IP}
+      XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
       PHP_IDE_CONFIG: serverName=localhost
     volumes:
       - ../containers/php7/custom.ini:/usr/local/etc/php/conf.d/custom.ini
